@@ -14,7 +14,7 @@ class DtoBankMock implements DtoInterface {
       id: 1,
       name: 'Cidade ADM de MG',
       bio: 'Perfil Oficial da Cidade Administrativa de MG ',
-      photo: 'photo',
+      photo: 'assets/imgs/city_adm_photo.png',
       location: 'Cidade administrativa',
       administratorGeneral: 'paulo.oliveira32',
       moderators: [
@@ -146,6 +146,7 @@ class DtoBankMock implements DtoInterface {
       ),
       createAt: DateTime.now(),
       updateAt: DateTime.now(),
+      photoBg: 'assets/imgs/photo_bg_profile.png',
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../constants/constants.dart';
 
@@ -52,5 +53,31 @@ sealed class TestOutTheme {
       ),
     ),
     fontFamily: FontsConstants.fontFamily,
+    textTheme: TextTheme(
+      bodySmall: GoogleFonts.openSans(
+        textStyle: const TextStyle(
+          color: Color(0xFF1A1C1E),
+          fontSize: 12,
+          fontWeight: FontWeight.w400,
+          height: 0.07,
+        ),
+      ),
+      bodyMedium: GoogleFonts.openSans(
+        textStyle: const TextStyle(
+          color: Color(0xFF1A1C1E),
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+          height: 0.10,
+        ),
+      ),
+      titleMedium: GoogleFonts.openSans(
+        textStyle: const TextStyle(
+          color: Color(0xFF1A1C1E),
+          fontSize: 22,
+          fontWeight: FontWeight.w700,
+          height: 0.07,
+        ),
+      ),
+    ),
   );
 }

@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:teste_out/src/core/ui/widgets/loading_widget.dart';
 import 'package:teste_out/src/dto/dto_bank_mock.dart';
 import 'package:teste_out/src/features/profile/profile_controller.dart';
+import 'package:teste_out/src/features/profile/widgets/header_widget.dart';
 import 'package:teste_out/src/repositories/profile_repository_impl.dart';
+
+import '../../core/ui/widgets/error_widget.dart';
+import 'widgets/tab_bar_name.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -17,6 +22,8 @@ class _ProfilePageState extends State<ProfilePage> {
     ),
   );
 
+  PageController pageController = PageController();
+
   @override
   void initState() {
     findProfile();
@@ -27,6 +34,22 @@ class _ProfilePageState extends State<ProfilePage> {
     controller.findProfile();
   }
 
+  List<String> breakText(String text, int maxCharsPerLine) {
+    List<String> lines = [];
+    int startIndex = 0;
+
+    while (startIndex < text.length) {
+      int endIndex = startIndex + maxCharsPerLine;
+      if (endIndex > text.length) {
+        endIndex = text.length;
+      }
+      lines.add(text.substring(startIndex, endIndex));
+      startIndex = endIndex;
+    }
+
+    return lines;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,113 +58,49 @@ class _ProfilePageState extends State<ProfilePage> {
         valueListenable: controller.statusNotifier,
         builder: (context, status, _) {
           if (status == ProfileStateStatus.loading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const ShowLoading();
           }
           if (status == ProfileStateStatus.error) {
-            return Center(child: Text('Erro: ${controller.errorMessage}'));
+            return ShowError(
+              errorMessage: controller.errorMessage.toString(),
+            );
           }
           if (status == ProfileStateStatus.loaded) {
             return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Stack(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      height: 200,
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/imgs/photo_bg_profile.png'),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                      child: Stack(
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Container(
-                              padding:
-                                  const EdgeInsets.only(top: 25, right: 12),
-                              child: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.arrow_back_ios,
-                                  size: 36,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional.bottomStart,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 150, left: 25),
-                        child: Stack(
-                          children: [
-                            Container(
-                              width: 120,
-                              height: 120,
-                              alignment: Alignment.topCenter,
-                              padding: const EdgeInsets.only(top: 8),
-                              decoration: const ShapeDecoration(
-                                shape: CircleBorder(),
-                                color: Colors.white,
-                              ),
-                              child: Container(
-                                height: 100,
-                                width: 100,
-                                decoration: const ShapeDecoration(
-                                  shape: CircleBorder(),
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/imgs/city_adm_photo.png'),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 50, left: 7),
-                              child: Align(
-                                alignment: AlignmentDirectional.bottomEnd,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: OutlinedButton(
-                                    onPressed: () {},
-                                    child: const Text(
-                                      'Editar perfil',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
+                HeaderWidget(controller: controller),
+                const SizedBox(
+                  height: 24,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Column(
+                TabBarName(
+                  pageController: pageController,
+                ),
+                Divider(
+                  color: Color(0xFF4E97FE),
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                Expanded(
+                  child: PageView(
+                    controller: pageController,
                     children: [
-                      Text(
-                        controller.profile!.name,
-                        style: const TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xff1A1C1E),
-                        ),
+                      ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: controller.profile!.activities.length,
+                        itemBuilder: (context, index) {
+                          final activity =
+                              controller.profile!.activities[index];
+                          return ListTile(
+                            title: Text(controller.profile!.name),
+                            subtitle: Text(
+                              activity.content,
+                              softWrap: false,
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),

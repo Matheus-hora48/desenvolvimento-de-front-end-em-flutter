@@ -8,6 +8,7 @@ class Profile {
     required this.name,
     required this.bio,
     required this.photo,
+    required this.photoBg,
     required this.location,
     required this.administratorGeneral,
     required this.moderators,
@@ -21,6 +22,7 @@ class Profile {
   String name;
   String bio;
   String photo;
+  final String photoBg;
   String location;
   String administratorGeneral;
   List<Moderator> moderators;
@@ -35,6 +37,7 @@ class Profile {
       name: json['name'],
       bio: json['bio'],
       photo: json['photo'],
+      photoBg: json['photoBg'],
       location: json['location'],
       administratorGeneral: json['administratorGeneral'],
       moderators: (json['moderators'] as List<dynamic>)
@@ -55,6 +58,7 @@ class Profile {
       'name': name,
       'bio': bio,
       'photo': photo,
+      'photoBg': photoBg,
       'location': location,
       'administratorGeneral': administratorGeneral,
       'moderators': moderators.map((moderator) => moderator.toJson()).toList(),

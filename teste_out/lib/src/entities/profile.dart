@@ -18,19 +18,18 @@ class Profile {
   });
 
   final int id;
-  final String name;
-  final String bio;
-  final String photo;
-  final String location;
-  final String administratorGeneral;
-  final List<Moderator> moderators;
-  final List<Activity> activities;
-  final About about;
+  String name;
+  String bio;
+  String photo;
+  String location;
+  String administratorGeneral;
+  List<Moderator> moderators;
+  List<Activity> activities;
+  About about;
   final DateTime createAt;
-  final DateTime updateAt;
+  DateTime updateAt;
 
   factory Profile.fromJson(Map<String, dynamic> json) {
-
     return Profile(
       id: json['id'],
       name: json['name'],
@@ -38,10 +37,9 @@ class Profile {
       photo: json['photo'],
       location: json['location'],
       administratorGeneral: json['administratorGeneral'],
-      
       moderators: (json['moderators'] as List<dynamic>)
           .map((moderator) => Moderator.fromJson(moderator))
-          .toList(),        
+          .toList(),
       activities: (json['activities'] as List<dynamic>)
           .map((activity) => Activity.fromJson(activity))
           .toList(),

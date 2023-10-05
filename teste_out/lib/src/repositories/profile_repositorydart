@@ -1,0 +1,5 @@
+abstract interface class ProfileRepositoryInterface {
+  Future<Either<RepositoryException, Profile>> findProfile();
+  Future<Either<RepositoryException, Nil>> editProfile(Profile profile);
+  Future<Either<RepositoryException, Nil>> editAbout(Profile profile);
+}

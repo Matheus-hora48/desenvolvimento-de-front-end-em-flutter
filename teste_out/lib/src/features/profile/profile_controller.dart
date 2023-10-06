@@ -3,6 +3,7 @@ import 'package:teste_out/src/core/fp/either.dart';
 
 import '../../entities/profile.dart';
 import '../../repositories/profile_repository.dart';
+import 'profile_singleton.dart';
 
 enum ProfileStateStatus {
   initial,
@@ -15,6 +16,9 @@ class ProfileController {
   final ValueNotifier<ProfileStateStatus> statusNotifier = ValueNotifier(
     ProfileStateStatus.initial,
   );
+
+  ProfileSingleton singleton = ProfileSingleton();
+
   String? errorMessage = '';
 
   Profile? _profile;
@@ -48,6 +52,8 @@ class ProfileController {
 
     switch (result) {
       case Success():
+        _profile = profile;
+        singleton.updateProfile(profile);
         statusNotifier.value = ProfileStateStatus.loaded;
         break;
       case Failure(:final exception):

@@ -68,4 +68,9 @@ class Profile {
       'updateAt': updateAt.toIso8601String(),
     };
   }
+
+  @override
+  String toString() {
+    return 'Profile{id=$id, name=$name, bio=$bio, photo=$photo, photoBg=$photoBg, location=$location, administratorGeneral=$administratorGeneral, moderators=$moderators, activities=$activities, about=$about, createAt=$createAt, updateAt=$updateAt}';
+  }
 }

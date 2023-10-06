@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:teste_out/src/core/ui/theme/test_out_theme.dart';
 import 'package:teste_out/src/core/ui/widgets/loading_widget.dart';
 import 'package:teste_out/src/dto/dto_bank_mock.dart';
 import 'package:teste_out/src/features/profile/profile_controller.dart';
@@ -75,7 +77,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 TabBarName(
                   pageController: pageController,
                 ),
-                Divider(
+                const Divider(
                   color: Color(0xFF4E97FE),
                 ),
                 const SizedBox(
@@ -92,11 +94,47 @@ class _ProfilePageState extends State<ProfilePage> {
                           final activity =
                               controller.profile!.activities[index];
                           return ListTile(
-                            title: Text(controller.profile!.name),
+                            leading: Container(
+                              width: 44,
+                              height: 44,
+                              decoration: ShapeDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage(controller.profile!.photo),
+                                  fit: BoxFit.fill,
+                                ),
+                                shape: const OvalBorder(),
+                              ),
+                            ),
+                            title: Row(
+                              children: [
+                                Text(
+                                  controller.profile!.name,
+                                  style: TestOutTheme
+                                      .themeData.textTheme.bodyMedium!
+                                      .copyWith(fontWeight: FontWeight.w700),
+                                ),
+                                const SizedBox(
+                                  width: 4,
+                                ),
+                                const Image(
+                                  image: AssetImage('assets/icons/vector.png'),
+                                ),
+                                const SizedBox(
+                                  width: 8,
+                                ),
+                                Text(
+                                  '@${activity.author} º ${DateFormat('dd MMM').format(activity.createAt)}',
+                                  style: TestOutTheme
+                                      .themeData.textTheme.bodySmall!,
+                                ),
+                                const Icon(Icons.arrow_drop_down)
+                              ],
+                            ),
                             subtitle: Text(
                               activity.content,
-                              softWrap: false,
-                              maxLines: 3,
+                              style:
+                                  TestOutTheme.themeData.textTheme.bodyMedium,
+                              maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
                           );

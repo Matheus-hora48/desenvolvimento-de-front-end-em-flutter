@@ -7,7 +7,7 @@ class Moderator {
   });
 
   final int id;
-  final String name;
+  String name;
   final DateTime createAt;
   final DateTime updateAt;
 

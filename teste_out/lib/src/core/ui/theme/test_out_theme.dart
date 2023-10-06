@@ -17,7 +17,7 @@ sealed class TestOutTheme {
     useMaterial3: true,
     appBarTheme: const AppBarTheme(
       centerTitle: true,
-      iconTheme: IconThemeData(color: Colors.white),
+      iconTheme: IconThemeData(color: ColorsConstants.blue),
       backgroundColor: Colors.white,
       titleTextStyle: TextStyle(
         fontWeight: FontWeight.w700,
@@ -28,6 +28,7 @@ sealed class TestOutTheme {
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
+      isDense: true,
       fillColor: Colors.white,
       labelStyle: const TextStyle(
         color: ColorsConstants.borderColor,

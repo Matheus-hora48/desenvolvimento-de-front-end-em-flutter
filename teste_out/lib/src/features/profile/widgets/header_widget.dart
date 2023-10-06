@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../../core/ui/theme/test_out_theme.dart';
+import '../../../entities/profile.dart';
+import '../edit_profile_page.dart';
 import '../profile_controller.dart';
 
-class HeaderWidget extends StatelessWidget {
+class HeaderWidget extends StatefulWidget {
   final ProfileController controller;
 
   const HeaderWidget({
@@ -12,6 +14,11 @@ class HeaderWidget extends StatelessWidget {
     required this.controller,
   });
 
+  @override
+  State<HeaderWidget> createState() => _HeaderWidgetState();
+}
+
+class _HeaderWidgetState extends State<HeaderWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,7 +32,7 @@ class HeaderWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(controller.profile!.photoBg),
+                  image: AssetImage(widget.controller.profile!.photoBg),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -69,7 +76,7 @@ class HeaderWidget extends StatelessWidget {
                         decoration: ShapeDecoration(
                           shape: const CircleBorder(),
                           image: DecorationImage(
-                            image: AssetImage(controller.profile!.photo),
+                            image: AssetImage(widget.controller.profile!.photo),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -82,7 +89,17 @@ class HeaderWidget extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              var novoPerfil = await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => EditProfilePage(
+                                    controller: widget.controller,
+                                  ),
+                                ),
+                              );
+
+                              widget.controller.editProfile(novoPerfil);
+                            },
                             child: const Text(
                               'Editar perfil',
                               style: TextStyle(
@@ -110,7 +127,7 @@ class HeaderWidget extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    controller.profile!.name,
+                    widget.controller.profile!.name,
                     style: TestOutTheme.themeData.textTheme.titleMedium,
                   ),
                 ],
@@ -121,7 +138,7 @@ class HeaderWidget extends StatelessWidget {
               FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
-                  controller.profile!.bio,
+                  widget.controller.profile!.bio,
                   style: TestOutTheme.themeData.textTheme.bodyMedium,
                 ),
               ),
@@ -139,7 +156,7 @@ class HeaderWidget extends StatelessWidget {
                     width: 8,
                   ),
                   Text(
-                    controller.profile!.location,
+                    widget.controller.profile!.location,
                     style: TestOutTheme.themeData.textTheme.bodySmall,
                   ),
                   const SizedBox(
@@ -154,7 +171,7 @@ class HeaderWidget extends StatelessWidget {
                     width: 8,
                   ),
                   Text(
-                    '${DateFormat.MMM().format(controller.profile!.createAt).toLowerCase()}/${DateFormat('yy').format(controller.profile!.createAt)}',
+                    '${DateFormat.MMM().format(widget.controller.profile!.createAt).toLowerCase()}/${DateFormat('yy').format(widget.controller.profile!.createAt)}',
                     style: TestOutTheme.themeData.textTheme.bodySmall,
                   ),
                 ],

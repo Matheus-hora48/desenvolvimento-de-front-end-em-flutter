@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:teste_out/src/core/ui/constants/constants.dart';
 
 import '../../../core/ui/theme/test_out_theme.dart';
-import '../../../entities/profile.dart';
 import '../edit_profile_page.dart';
 import '../profile_controller.dart';
 
@@ -120,6 +120,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
                 height: 8,
@@ -133,7 +134,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                 ],
               ),
               const SizedBox(
-                height: 32,
+                height: 12,
               ),
               FittedBox(
                 fit: BoxFit.scaleDown,
@@ -143,7 +144,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                 ),
               ),
               const SizedBox(
-                height: 24,
+                height: 12,
               ),
               Row(
                 children: [
@@ -157,7 +158,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                   ),
                   Text(
                     widget.controller.profile!.location,
-                    style: TestOutTheme.themeData.textTheme.bodySmall,
+                    style: TestOutTheme.themeData.textTheme.bodySmall!
+                        .copyWith(color: ColorsConstants.lightGrey),
                   ),
                   const SizedBox(
                     width: 16,
@@ -171,8 +173,9 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                     width: 8,
                   ),
                   Text(
-                    '${DateFormat.MMM().format(widget.controller.profile!.createAt).toLowerCase()}/${DateFormat('yy').format(widget.controller.profile!.createAt)}',
-                    style: TestOutTheme.themeData.textTheme.bodySmall,
+                    'Entrou em ${DateFormat.MMM().format(widget.controller.profile!.createAt).toLowerCase()}/${DateFormat('yy').format(widget.controller.profile!.createAt)}',
+                    style: TestOutTheme.themeData.textTheme.bodySmall!
+                        .copyWith(color: ColorsConstants.lightGrey),
                   ),
                 ],
               )

@@ -26,9 +26,16 @@ sealed class TestOutTheme {
         fontFamily: FontsConstants.fontFamily,
       ),
     ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: Colors.white,
+    ),
     inputDecorationTheme: InputDecorationTheme(
-      filled: true,
+      isCollapsed: true,
       isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        vertical: 8,
+        horizontal: 12,
+      ),
       fillColor: Colors.white,
       labelStyle: const TextStyle(
         color: ColorsConstants.borderColor,
@@ -48,19 +55,18 @@ sealed class TestOutTheme {
           color: ColorsConstants.blue,
           width: 1,
         ),
+        textStyle: const TextStyle(color: ColorsConstants.black),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(48),
         ),
       ),
     ),
-    fontFamily: FontsConstants.fontFamily,
     textTheme: TextTheme(
       bodySmall: GoogleFonts.openSans(
         textStyle: const TextStyle(
           color: Color(0xFF1A1C1E),
           fontSize: 12,
           fontWeight: FontWeight.w400,
-          height: 0.07,
         ),
       ),
       bodyMedium: GoogleFonts.openSans(
@@ -68,7 +74,6 @@ sealed class TestOutTheme {
           color: Color(0xFF1A1C1E),
           fontSize: 16,
           fontWeight: FontWeight.w400,
-          height: 0.10,
         ),
       ),
       titleMedium: GoogleFonts.openSans(
@@ -76,7 +81,6 @@ sealed class TestOutTheme {
           color: Color(0xFF1A1C1E),
           fontSize: 22,
           fontWeight: FontWeight.w700,
-          height: 0.07,
         ),
       ),
     ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teste_out/src/core/ui/theme/test_out_theme.dart';
 import 'package:teste_out/src/features/profile/profile_controller.dart';
 
 import '../../entities/profile.dart';
@@ -80,6 +81,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             ),
           ],
         ),
+        backgroundColor: Colors.white,
         body: Padding(
           padding: const EdgeInsets.all(24),
           child: SingleChildScrollView(
@@ -91,6 +93,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
                 Text(
                   'Imagem de perfil',
+                  style: TestOutTheme.themeData.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(
                   height: 12,
@@ -98,7 +101,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 const SizedBox(
                   height: 32,
                 ),
-                Text('Nome'),
+                Text('Nome', style: TestOutTheme.themeData.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),),
                 const SizedBox(
                   height: 12,
                 ),
@@ -109,7 +112,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 const SizedBox(
                   height: 32,
                 ),
-                Text('Bio'),
+                Text('Bio', style: TestOutTheme.themeData.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),),
                 const SizedBox(
                   height: 12,
                 ),
@@ -120,7 +123,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 const SizedBox(
                   height: 32,
                 ),
-                Text('Localização'),
+                Text('Localização', style: TestOutTheme.themeData.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),),
                 const SizedBox(
                   height: 12,
                 ),
@@ -131,7 +134,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 const SizedBox(
                   height: 32,
                 ),
-                Text('Administrador geral'),
+                Text('Administrador geral', style: TestOutTheme.themeData.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),),
                 const SizedBox(
                   height: 12,
                 ),

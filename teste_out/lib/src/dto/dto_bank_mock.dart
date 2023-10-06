@@ -57,7 +57,25 @@ class DtoBankMock implements DtoInterface {
           comments: [],
           createAt: DateTime(2023, 5, 10),
           updateAt: DateTime(2023, 5, 10),
-        )
+        ),
+        Activity(
+          id: 4,
+          author: 'cidadeadm',
+          content:
+              'Lorem ipsum dolor sit amet consectetur. Praesent congue magna sapien leo. Nunc varius sed volutpat amet turpis. Eros tempus.',
+          comments: [],
+          createAt: DateTime(2023, 5, 10),
+          updateAt: DateTime(2023, 5, 10),
+        ),
+        Activity(
+          id: 5,
+          author: 'cidadeadm',
+          content:
+              'Lorem ipsum dolor sit amet consectetur. Praesent congue magna sapien leo. Nunc varius sed volutpat amet turpis. Eros tempus.',
+          comments: [],
+          createAt: DateTime(2023, 5, 10),
+          updateAt: DateTime(2023, 5, 10),
+        ),
       ],
       about: About(
         id: 1,

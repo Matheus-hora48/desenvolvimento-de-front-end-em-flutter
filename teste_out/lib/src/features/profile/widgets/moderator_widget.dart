@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:teste_out/src/core/ui/constants/constants.dart';
 import 'package:teste_out/src/entities/profile.dart';
 import 'package:teste_out/src/features/profile/profile_controller.dart';
 
+import '../../../core/ui/theme/test_out_theme.dart';
 import '../../../entities/moderator.dart';
 
 class ModeratorWidget extends StatefulWidget {
@@ -33,7 +35,12 @@ class _ModeratorWidgetState extends State<ModeratorWidget> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Adicionar Moderador'),
+        backgroundColor: Colors.white,
+        title: Text(
+          'Adicionar Moderador',
+          style: TestOutTheme.themeData.textTheme.bodyMedium!
+              .copyWith(fontWeight: FontWeight.w700),
+        ),
         content: TextFormField(
           controller: controller,
           decoration: const InputDecoration(labelText: 'Nome do Moderador'),
@@ -54,7 +61,10 @@ class _ModeratorWidgetState extends State<ModeratorWidget> {
                 Navigator.of(context).pop();
               });
             },
-            child: const Text('Adicionar'),
+            child: const Text(
+              'Adicionar',
+              style: TextStyle(color: ColorsConstants.blue),
+            ),
           ),
         ],
       ),
@@ -75,7 +85,11 @@ class _ModeratorWidgetState extends State<ModeratorWidget> {
       children: [
         Row(
           children: [
-            const Text('Moderadores'),
+            Text(
+              'Moderadores',
+              style: TestOutTheme.themeData.textTheme.bodyMedium!
+                  .copyWith(fontWeight: FontWeight.w700),
+            ),
             const Spacer(),
             OutlinedButton(
               onPressed: adicionarModerador,
@@ -105,7 +119,10 @@ class _ModeratorWidgetState extends State<ModeratorWidget> {
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.remove_circle_outline),
+                    icon: const Icon(
+                      Icons.remove_circle_outline,
+                      color: ColorsConstants.errorColor,
+                    ),
                     onPressed: () => removeModerator(index),
                   ),
                 ],

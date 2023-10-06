@@ -11,6 +11,7 @@ sealed class ColorsConstants {
   static const lineColor = Color(0xFFE3E2E6);
   static const appBarTextColor = Color(0xff001B3D);
   static const errorColor = Color(0xffBA1A1A);
+  static const menuColor = Color(0xff939393);
 }
 
 sealed class FontsConstants {

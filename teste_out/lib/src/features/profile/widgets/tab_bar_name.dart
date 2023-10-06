@@ -40,7 +40,7 @@ class TabBarNameState extends State<TabBarName> {
                   selectName(0);
                 },
                 child: Padding(
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.only(top: 16, bottom: 8),
                   child: Text(
                     'Atividade',
                     style: TextStyle(
@@ -60,7 +60,7 @@ class TabBarNameState extends State<TabBarName> {
                   selectName(1);
                 },
                 child: Padding(
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.only(top: 16, bottom: 8),
                   child: Text(
                     'Sobre',
                     style: TextStyle(
@@ -80,7 +80,7 @@ class TabBarNameState extends State<TabBarName> {
                   selectName(2);
                 },
                 child: Padding(
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.only(top: 16, bottom: 8),
                   child: Text(
                     'Avisos e Comunicados',
                     style: TextStyle(

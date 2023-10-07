@@ -1,4 +1,4 @@
-# README - Seu App Flutter
+# Teste Out
 
 Este é um aplicativo Flutter desenvolvido com o mínimo de dependências, priorizando a utilização das funcionalidades nativas do Flutter. Abaixo está a lista de dependências utilizadas:
 

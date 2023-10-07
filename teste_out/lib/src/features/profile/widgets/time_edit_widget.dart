@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:teste_out/src/features/profile/profile_controller.dart';
 
+import '../../../core/styles/font_styles.dart';
+import '../../../core/ui/constants/constants.dart';
 import '../../../entities/opening_hour.dart';
 import 'time_picker_dropdown_widget.dart';
 
@@ -32,7 +34,10 @@ class _TimeEditWidgetState extends State<TimeEditWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Horário de atendimento'),
+        Text(
+          'Horário de atendimento',
+          style: TextStyles.instance.textSubtitle3,
+        ),
         const SizedBox(
           height: 12,
         ),
@@ -170,6 +175,8 @@ class _TimeEditWidgetState extends State<TimeEditWidget> {
                                 underline: const SizedBox(),
                                 isDense: true,
                                 value: day.isClosed,
+                                iconEnabledColor: ColorsConstants.blue,
+                                style: TextStyles.instance.textSubtitle1,
                                 onChanged: (bool? newValue) {
                                   if (newValue != null) {
                                     setState(() {

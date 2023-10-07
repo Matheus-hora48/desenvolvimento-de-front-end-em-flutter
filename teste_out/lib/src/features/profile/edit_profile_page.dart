@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:teste_out/src/core/styles/font_styles.dart';
+import 'package:teste_out/src/core/ui/constants/constants.dart';
 import 'package:teste_out/src/features/profile/profile_controller.dart';
 
 import '../../entities/profile.dart';
@@ -91,7 +92,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
           actions: [
             TextButton(
               onPressed: () => updateProfile(),
-              child: const Text('Salvar'),
+              child: const Text(
+                'Salvar',
+                style: TextStyle(color: ColorsConstants.blue),
+              ),
             ),
           ],
         ),

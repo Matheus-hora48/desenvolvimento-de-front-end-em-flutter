@@ -2,9 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:teste_out/src/core/ui/constants/constants.dart';
 
-import '../../../core/ui/theme/test_out_theme.dart';
+import '../../../core/styles/font_styles.dart';
 import '../edit_profile_page.dart';
 import '../profile_controller.dart';
 
@@ -110,7 +109,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                             },
                             child: Text(
                               'Editar perfil',
-                              style: TestOutTheme.themeData.textTheme.bodyLarge,
+                              style: TextStyles.instance.textButtonLabel1,
                             ),
                           ),
                         ),
@@ -132,10 +131,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
               ),
               Row(
                 children: [
-                  Text(
-                    widget.controller.profile!.name,
-                    style: TestOutTheme.themeData.textTheme.titleMedium,
-                  ),
+                  Text(widget.controller.profile!.name,
+                      style: TextStyles.instance.textTitle),
                 ],
               ),
               const SizedBox(
@@ -145,7 +142,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                 fit: BoxFit.scaleDown,
                 child: Text(
                   widget.controller.profile!.bio,
-                  style: TestOutTheme.themeData.textTheme.bodyMedium,
+                  style: TextStyles.instance.textSubtitle1,
                 ),
               ),
               const SizedBox(
@@ -161,11 +158,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                   const SizedBox(
                     width: 8,
                   ),
-                  Text(
-                    widget.controller.profile!.location,
-                    style: TestOutTheme.themeData.textTheme.bodySmall!
-                        .copyWith(color: ColorsConstants.lightGrey),
-                  ),
+                  Text(widget.controller.profile!.location,
+                      style: TextStyles.instance.textLabel1),
                   const SizedBox(
                     width: 16,
                   ),
@@ -179,8 +173,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                   ),
                   Text(
                     'Entrou em ${DateFormat.MMM().format(widget.controller.profile!.createAt).toLowerCase()}/${DateFormat('yy').format(widget.controller.profile!.createAt)}',
-                    style: TestOutTheme.themeData.textTheme.bodySmall!
-                        .copyWith(color: ColorsConstants.lightGrey),
+                    style: TextStyles.instance.textLabel1,
                   ),
                 ],
               )

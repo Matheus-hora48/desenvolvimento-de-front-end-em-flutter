@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:teste_out/src/core/ui/constants/constants.dart';
 import 'package:teste_out/src/features/profile/profile_controller.dart';
 
-import '../../../core/ui/theme/test_out_theme.dart';
+import '../../../core/styles/font_styles.dart';
 import '../../../entities/opening_hour.dart';
 
 class ServiceTimeWidget extends StatelessWidget {
@@ -17,12 +17,10 @@ class ServiceTimeWidget extends StatelessWidget {
       children: [
         Text(
           'Horário de Atendimento',
-          style: TestOutTheme.themeData.textTheme.bodyMedium!.copyWith(
-            fontWeight: FontWeight.w700,
-          ),
+          style: TextStyles.instance.textSubtitle3,
         ),
         SizedBox(
-          height: 30.0 * controller.profile!.about.openingHours.length,
+          height: 22.0 * controller.profile!.about.openingHours.length,
           child: ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
             itemCount: controller.profile!.about.openingHours.length,
@@ -35,10 +33,7 @@ class ServiceTimeWidget extends StatelessWidget {
                 children: [
                   Text(
                     hours.dayOfTheWeek,
-                    style:
-                        TestOutTheme.themeData.textTheme.labelSmall!.copyWith(
-                      color: ColorsConstants.lightGrey,
-                    ),
+                    style: TextStyles.instance.textLabel1,
                   ),
                   Expanded(
                     child: Container(
@@ -49,10 +44,7 @@ class ServiceTimeWidget extends StatelessWidget {
                   ),
                   Text(
                     '${hours.start.format(context)} às ${hours.end.format(context)}',
-                    style:
-                        TestOutTheme.themeData.textTheme.labelSmall!.copyWith(
-                      color: ColorsConstants.lightGrey,
-                    ),
+                    style: TextStyles.instance.textLabel1,
                   ),
                 ],
               );

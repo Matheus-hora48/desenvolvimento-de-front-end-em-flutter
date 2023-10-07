@@ -85,7 +85,7 @@ class DtoBankMock implements DtoInterface {
           Building(
             id: 1,
             name: 'Edifício Sul',
-            photo: 'photo',
+            photo: 'assets/imgs/building1.png',
             administrator: 'felipeluizz_',
             createAt: DateTime.now(),
             updateAt: DateTime.now(),
@@ -93,7 +93,7 @@ class DtoBankMock implements DtoInterface {
           Building(
             id: 2,
             name: 'Edifício Norte',
-            photo: 'photo',
+            photo: 'assets/imgs/building2.png',
             administrator: 'robertapaula20',
             createAt: DateTime.now(),
             updateAt: DateTime.now(),
@@ -101,7 +101,7 @@ class DtoBankMock implements DtoInterface {
           Building(
             id: 3,
             name: 'Edifício Central',
-            photo: 'photo',
+            photo: 'assets/imgs/building3.png',
             administrator: 'eumunhozricardo',
             createAt: DateTime.now(),
             updateAt: DateTime.now(),

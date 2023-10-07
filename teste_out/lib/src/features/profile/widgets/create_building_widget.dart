@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:teste_out/src/features/profile/profile_controller.dart';
 
-import '../../../core/ui/constants/constants.dart';
-import '../../../core/ui/theme/test_out_theme.dart';
+import '../../../core/styles/font_styles.dart';
+
 import '../../../entities/building.dart';
 
 class CreateBuildingWidget extends StatelessWidget {
@@ -17,9 +17,7 @@ class CreateBuildingWidget extends StatelessWidget {
       children: [
         Text(
           'Edifícios',
-          style: TestOutTheme.themeData.textTheme.bodyMedium!.copyWith(
-            fontWeight: FontWeight.w700,
-          ),
+          style: TextStyles.instance.textSubtitle3,
         ),
         SizedBox(
           height: 80.0 * controller.profile!.about.buildings.length,
@@ -33,11 +31,9 @@ class CreateBuildingWidget extends StatelessWidget {
                 leading: Container(
                   width: 44,
                   height: 44,
-                  decoration: const ShapeDecoration(
+                  decoration: ShapeDecoration(
                     image: DecorationImage(
-                      image: AssetImage(
-                        'assets/imgs/city_adm_photo.png',
-                      ),
+                      image: AssetImage(building.photo),
                       fit: BoxFit.fill,
                     ),
                     shape: OvalBorder(),
@@ -48,10 +44,7 @@ class CreateBuildingWidget extends StatelessWidget {
                     children: [
                       Text(
                         building.name,
-                        style: TestOutTheme.themeData.textTheme.bodyMedium!
-                            .copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
+                        style: TextStyles.instance.textSubtitle3,
                       ),
                       const SizedBox(
                         width: 4,
@@ -64,17 +57,14 @@ class CreateBuildingWidget extends StatelessWidget {
                       ),
                       Text(
                         '@${building.administrator}',
-                        style: TestOutTheme.themeData.textTheme.bodySmall!
-                            .copyWith(
-                          color: ColorsConstants.lightGrey,
-                        ),
+                        style: TextStyles.instance.textLabel1,
                       )
                     ],
                   ),
                 ),
                 subtitle: Text(
                   'Edifício da(o) ${controller.profile!.name}',
-                  style: TestOutTheme.themeData.textTheme.bodyMedium,
+                  style: TextStyles.instance.textSubtitle1,
                 ),
               );
             },

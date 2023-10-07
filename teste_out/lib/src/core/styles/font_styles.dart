@@ -72,7 +72,7 @@ class TextStyles {
         fontSize: 16,
         color: ColorsConstants.black,
       );
-  TextStyle get textLabel1 => textExtraBold.copyWith(
+  TextStyle get textLabel1 => textRegular.copyWith(
         fontSize: 12,
         color: ColorsConstants.lightGrey,
       );

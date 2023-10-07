@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:teste_out/src/core/ui/theme/test_out_theme.dart';
+import 'package:teste_out/src/core/styles/font_styles.dart';
+import 'package:teste_out/src/core/ui/constants/constants.dart';
 import 'package:teste_out/src/core/ui/widgets/loading_widget.dart';
 import 'package:teste_out/src/features/profile/edit_about_page.dart';
 import 'package:teste_out/src/features/profile/profile_controller.dart';
@@ -52,15 +53,14 @@ class _AboutTabState extends State<AboutTab> {
         if (locations.isNotEmpty) {
           latitude = locations.first.latitude;
           longitude = locations.first.longitude;
-          print('$latitude e $longitude');
         } else {
           throw Exception("Não foi possível obter as coordenadas do endereço");
         }
       } catch (e) {
-        print(e);
+        throw Exception(e);
       }
     } else {
-      print("O endereço não foi informado");
+      throw Exception("O endereço não foi informado");
     }
 
     setState(() {
@@ -103,9 +103,7 @@ class _AboutTabState extends State<AboutTab> {
                 },
                 child: Text(
                   'Editar seção sobre',
-                  style: TestOutTheme.themeData.textTheme.bodyMedium!.copyWith(
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: TextStyles.instance.textButtonLabel1,
                 ),
               ),
               const SizedBox(
@@ -125,9 +123,7 @@ class _AboutTabState extends State<AboutTab> {
               ),
               Text(
                 'Localização',
-                style: TestOutTheme.themeData.textTheme.bodyMedium!.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
+                style: TextStyles.instance.textSubtitle3,
               ),
               const SizedBox(
                 height: 24,
@@ -135,7 +131,10 @@ class _AboutTabState extends State<AboutTab> {
               FittedBox(
                 child: Row(
                   children: [
-                    const Icon(Icons.location_pin),
+                    const Icon(
+                      Icons.location_pin,
+                      color: ColorsConstants.purple,
+                    ),
                     const SizedBox(
                       width: 8,
                     ),
@@ -168,16 +167,14 @@ class _AboutTabState extends State<AboutTab> {
               ),
               Text(
                 'Contato',
-                style: TestOutTheme.themeData.textTheme.bodyMedium!.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
+                style: TextStyles.instance.textSubtitle3,
               ),
               const SizedBox(
                 height: 12,
               ),
               Row(
                 children: [
-                  const Icon(Icons.abc),
+                  Image.asset('assets/icons/whats.png'),
                   const SizedBox(
                     width: 8,
                   ),
@@ -189,7 +186,7 @@ class _AboutTabState extends State<AboutTab> {
               ),
               Row(
                 children: [
-                  const Icon(Icons.email_outlined),
+                  Image.asset('assets/icons/email.png'),
                   const SizedBox(
                     width: 8,
                   ),

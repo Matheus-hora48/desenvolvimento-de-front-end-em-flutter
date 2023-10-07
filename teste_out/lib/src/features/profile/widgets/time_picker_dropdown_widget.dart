@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:teste_out/src/core/ui/constants/constants.dart';
+
+import '../../../core/styles/font_styles.dart';
 
 class TimePickerDropdown extends StatelessWidget {
   final TimeOfDay value;
@@ -33,6 +36,8 @@ class TimePickerDropdown extends StatelessWidget {
           isDense: true,
           value: value,
           onChanged: onChanged,
+          style: TextStyles.instance.textSubtitle1,
+          iconEnabledColor: ColorsConstants.blue,
           items: items.map<DropdownMenuItem<TimeOfDay>>((TimeOfDay value) {
             return DropdownMenuItem<TimeOfDay>(
               value: value,

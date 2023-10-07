@@ -1,9 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:teste_out/src/features/profile/profile_controller.dart';
 
+import '../../../core/styles/font_styles.dart';
 import '../../../entities/building.dart';
 
 class BuildingEditWidget extends StatefulWidget {
@@ -37,50 +35,6 @@ class _BuildingEditWidgetState extends State<BuildingEditWidget> {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Center(
-                child: GestureDetector(
-                  onTap: () => updateProfileImage(building!),
-                  child: Stack(
-                    children: [
-                      Container(
-                        width: 100,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          image: DecorationImage(
-                            image: widget.controller.profile!.photo != null
-                                ? FileImage(
-                                    File(building!.photo),
-                                  )
-                                : const AssetImage(
-                                    'assets/imgs/city_adm_photo.png',
-                                  ) as ImageProvider,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: Colors.black.withOpacity(0.6),
-                          ),
-                        ),
-                      ),
-                      const Positioned(
-                        bottom: 34,
-                        right: 34,
-                        child: Icon(
-                          Icons.camera_alt,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 24,
-              ),
               TextFormField(
                 controller: nameController,
                 decoration: const InputDecoration(labelText: 'Nome do Prédio'),
@@ -124,17 +78,6 @@ class _BuildingEditWidgetState extends State<BuildingEditWidget> {
     );
   }
 
-  Future<void> updateProfileImage(Building building) async {
-    final picker = ImagePicker();
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-
-    if (pickedFile != null) {
-      setState(() {
-        building.photo = pickedFile.path;
-      });
-    }
-  }
-
   void addBuilding(String newName, String newAdmin) {
     setState(() {
       int newId = widget.controller.profile!.about.buildings.isNotEmpty
@@ -176,10 +119,14 @@ class _BuildingEditWidgetState extends State<BuildingEditWidget> {
           children: [
             const Text('Edifícios'),
             OutlinedButton(
-                onPressed: () {
-                  showBuildingDialog(context, null);
-                },
-                child: const Text('Adicionar'))
+              onPressed: () {
+                showBuildingDialog(context, null);
+              },
+              child: Text(
+                'Adicionar',
+                style: TextStyles.instance.textButtonLabel2,
+              ),
+            )
           ],
         ),
         SizedBox(
@@ -198,9 +145,7 @@ class _BuildingEditWidgetState extends State<BuildingEditWidget> {
                       decoration: ShapeDecoration(
                         image: DecorationImage(
                           image: widget.controller.profile!.photo != null
-                              ? FileImage(
-                                  File(widget.controller.profile!.photo ?? ''),
-                                )
+                              ? AssetImage(building.photo)
                               : const AssetImage(
                                   'assets/imgs/city_adm_photo.png',
                                 ) as ImageProvider,

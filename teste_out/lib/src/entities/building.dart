@@ -10,7 +10,7 @@ class Building {
 
   final int id;
   String name;
-  String photo;
+  final String photo;
   String administrator;
   final DateTime createAt;
   DateTime updateAt;

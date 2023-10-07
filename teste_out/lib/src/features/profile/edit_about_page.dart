@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teste_out/src/core/ui/constants/constants.dart';
 import 'package:teste_out/src/features/profile/profile_controller.dart';
 import 'package:teste_out/src/features/profile/widgets/building_edit_widget.dart';
 import 'package:teste_out/src/features/profile/widgets/time_edit_widget.dart';
@@ -62,7 +63,10 @@ class _EditAboutPageState extends State<EditAboutPage> {
         actions: [
           TextButton(
             onPressed: () => saveChanges(),
-            child: const Text('Salvar'),
+            child: const Text(
+              'Salvar',
+              style: TextStyle(color: ColorsConstants.blue),
+            ),
           ),
         ],
       ),

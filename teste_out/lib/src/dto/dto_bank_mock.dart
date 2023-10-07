@@ -14,7 +14,6 @@ class DtoBankMock implements DtoInterface {
       id: 1,
       name: 'Cidade ADM de MG',
       bio: 'Perfil Oficial da Cidade Administrativa de MG ',
-      photo: 'assets/imgs/city_adm_photo.png',
       location: 'Cidade administrativa',
       administratorGeneral: 'paulo.oliveira32',
       moderators: [
@@ -81,7 +80,7 @@ class DtoBankMock implements DtoInterface {
         id: 1,
         phone: '+55 15 91234-5678',
         email: 'edificiosul@governomg.com.br',
-        location: 'Cidade ADM de MG',
+        location: 'São Jorge 2ª Seção, Belo Horizonte - MG, 30451-102',
         buildings: [
           Building(
             id: 1,
@@ -149,14 +148,14 @@ class DtoBankMock implements DtoInterface {
             dayOfTheWeek: 'Sábado',
             start: const TimeOfDay(hour: 0, minute: 0),
             end: const TimeOfDay(hour: 0, minute: 0),
-            isClosed: false,
+            isClosed: true,
           ),
           OpeningHour(
             id: 7,
             dayOfTheWeek: 'Domingo',
             start: const TimeOfDay(hour: 0, minute: 0),
             end: const TimeOfDay(hour: 0, minute: 0),
-            isClosed: false,
+            isClosed: true,
           ),
         ],
         createAt: DateTime.now(),

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:teste_out/src/core/ui/constants/constants.dart';
 import 'package:teste_out/src/entities/profile.dart';
 import 'package:teste_out/src/features/profile/profile_controller.dart';
 
-import '../../../core/ui/theme/test_out_theme.dart';
+import '../../../core/styles/font_styles.dart';
 import '../../../entities/moderator.dart';
 
 class ModeratorWidget extends StatefulWidget {
@@ -15,10 +14,10 @@ class ModeratorWidget extends StatefulWidget {
       {super.key, required this.profile, required this.controller});
 
   @override
-  _ModeratorWidgetState createState() => _ModeratorWidgetState();
+  ModeratorWidgetState createState() => ModeratorWidgetState();
 }
 
-class _ModeratorWidgetState extends State<ModeratorWidget> {
+class ModeratorWidgetState extends State<ModeratorWidget> {
   List<TextEditingController> controllers = [];
 
   @override
@@ -38,8 +37,7 @@ class _ModeratorWidgetState extends State<ModeratorWidget> {
         backgroundColor: Colors.white,
         title: Text(
           'Adicionar Moderador',
-          style: TestOutTheme.themeData.textTheme.bodyMedium!
-              .copyWith(fontWeight: FontWeight.w700),
+          style: TextStyles.instance.textSubtitle3,
         ),
         content: TextFormField(
           controller: controller,
@@ -87,13 +85,15 @@ class _ModeratorWidgetState extends State<ModeratorWidget> {
           children: [
             Text(
               'Moderadores',
-              style: TestOutTheme.themeData.textTheme.bodyMedium!
-                  .copyWith(fontWeight: FontWeight.w700),
+              style: TextStyles.instance.textSubtitle3,
             ),
             const Spacer(),
             OutlinedButton(
               onPressed: adicionarModerador,
-              child: const Text('Adicionar'),
+              child: Text(
+                'Adicionar',
+                style: TextStyles.instance.textButtonLabel2,
+              ),
             )
           ],
         ),

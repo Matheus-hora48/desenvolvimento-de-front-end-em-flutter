@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
 import '../constants/constants.dart';
 
 sealed class TestOutTheme {
@@ -58,29 +56,6 @@ sealed class TestOutTheme {
         textStyle: const TextStyle(color: ColorsConstants.black),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(48),
-        ),
-      ),
-    ),
-    textTheme: TextTheme(
-      bodySmall: GoogleFonts.openSans(
-        textStyle: const TextStyle(
-          color: Color(0xFF1A1C1E),
-          fontSize: 12,
-          fontWeight: FontWeight.w400,
-        ),
-      ),
-      bodyMedium: GoogleFonts.openSans(
-        textStyle: const TextStyle(
-          color: Color(0xFF1A1C1E),
-          fontSize: 16,
-          fontWeight: FontWeight.w400,
-        ),
-      ),
-      titleMedium: GoogleFonts.openSans(
-        textStyle: const TextStyle(
-          color: Color(0xFF1A1C1E),
-          fontSize: 22,
-          fontWeight: FontWeight.w700,
         ),
       ),
     ),

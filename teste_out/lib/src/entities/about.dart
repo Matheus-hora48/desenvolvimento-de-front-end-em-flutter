@@ -14,9 +14,9 @@ class About {
   });
 
   final int id;
-  final String phone;
-  final String email;
-  final String location;
+  String phone;
+  String email;
+  String location;
   final List<Building> buildings;
   final List<OpeningHour> openingHours;
   final DateTime createAt;

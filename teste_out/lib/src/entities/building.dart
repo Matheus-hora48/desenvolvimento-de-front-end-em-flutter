@@ -9,11 +9,11 @@ class Building {
   });
 
   final int id;
-  final String name;
-  final String photo;
-  final String administrator;
+  String name;
+  String photo;
+  String administrator;
   final DateTime createAt;
-  final DateTime updateAt;
+  DateTime updateAt;
 
   factory Building.fromJson(Map<String, dynamic> json) {
     return Building(

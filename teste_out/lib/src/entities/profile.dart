@@ -7,7 +7,7 @@ class Profile {
     required this.id,
     required this.name,
     required this.bio,
-    required this.photo,
+     this.photo,
     required this.photoBg,
     required this.location,
     required this.administratorGeneral,
@@ -21,7 +21,7 @@ class Profile {
   final int id;
   String name;
   String bio;
-  String photo;
+  String? photo;
   final String photoBg;
   String location;
   String administratorGeneral;

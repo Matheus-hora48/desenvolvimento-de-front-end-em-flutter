@@ -11,9 +11,9 @@ class OpeningHour {
 
   final int id;
   final String dayOfTheWeek;
-  final TimeOfDay start;
-  final TimeOfDay end;
-  final bool isClosed;
+  TimeOfDay start;
+  TimeOfDay end;
+  bool isClosed;
 
   factory OpeningHour.fromJson(Map<String, dynamic> json) {
     return OpeningHour(

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:teste_out/src/core/ui/constants/constants.dart';
@@ -76,7 +78,14 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                         decoration: ShapeDecoration(
                           shape: const CircleBorder(),
                           image: DecorationImage(
-                            image: AssetImage(widget.controller.profile!.photo),
+                            image: widget.controller.profile!.photo != null
+                                ? FileImage(
+                                    File(
+                                        widget.controller.profile!.photo ?? ''),
+                                  )
+                                : const AssetImage(
+                                    'assets/imgs/city_adm_photo.png',
+                                  ) as ImageProvider,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -90,22 +99,18 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                           padding: const EdgeInsets.all(8.0),
                           child: OutlinedButton(
                             onPressed: () async {
-                              var novoPerfil = await Navigator.of(context).push(
+                              var newProfile = await Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) => EditProfilePage(
                                     controller: widget.controller,
                                   ),
                                 ),
                               );
-
-                              widget.controller.editProfile(novoPerfil);
+                              widget.controller.editProfile(newProfile);
                             },
-                            child: const Text(
+                            child: Text(
                               'Editar perfil',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600,
-                              ),
+                              style: TestOutTheme.themeData.textTheme.bodyLarge,
                             ),
                           ),
                         ),

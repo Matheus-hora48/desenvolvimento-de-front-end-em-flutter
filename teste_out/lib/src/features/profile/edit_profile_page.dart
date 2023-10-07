@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:teste_out/src/core/ui/theme/test_out_theme.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:teste_out/src/core/styles/font_styles.dart';
 import 'package:teste_out/src/features/profile/profile_controller.dart';
 
 import '../../entities/profile.dart';
@@ -69,6 +72,17 @@ class _EditProfilePageState extends State<EditProfilePage> {
     Navigator.pop(context, perfilAtualizado);
   }
 
+  Future<void> _updateProfileImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        widget.controller.profile!.photo = pickedFile.path;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,15 +107,57 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
                 Text(
                   'Imagem de perfil',
-                  style: TestOutTheme.themeData.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),
+                  style: TextStyles.instance.textSubtitle3,
                 ),
                 const SizedBox(
                   height: 12,
                 ),
+                Center(
+                  child: GestureDetector(
+                    onTap: _updateProfileImage,
+                    child: Stack(
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 100,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            image: DecorationImage(
+                              image: widget.controller.profile!.photo != null
+                                  ? FileImage(
+                                      File(widget.controller.profile!.photo ??
+                                          ''),
+                                    )
+                                  : const AssetImage(
+                                      'assets/imgs/city_adm_photo.png',
+                                    ) as ImageProvider,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: Colors.black.withOpacity(0.6),
+                            ),
+                          ),
+                        ),
+                        const Positioned(
+                          bottom: 34,
+                          right: 34,
+                          child: Icon(
+                            Icons.camera_alt,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 const SizedBox(
                   height: 32,
                 ),
-                Text('Nome', style: TestOutTheme.themeData.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),),
+                Text('Nome', style: TextStyles.instance.textSubtitle3),
                 const SizedBox(
                   height: 12,
                 ),
@@ -112,7 +168,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 const SizedBox(
                   height: 32,
                 ),
-                Text('Bio', style: TestOutTheme.themeData.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),),
+                Text('Bio', style: TextStyles.instance.textSubtitle3),
                 const SizedBox(
                   height: 12,
                 ),
@@ -123,7 +179,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 const SizedBox(
                   height: 32,
                 ),
-                Text('Localização', style: TestOutTheme.themeData.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),),
+                Text('Localização', style: TextStyles.instance.textSubtitle3),
                 const SizedBox(
                   height: 12,
                 ),
@@ -134,7 +190,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 const SizedBox(
                   height: 32,
                 ),
-                Text('Administrador geral', style: TestOutTheme.themeData.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),),
+                Text('Administrador geral',
+                    style: TextStyles.instance.textSubtitle3),
                 const SizedBox(
                   height: 12,
                 ),

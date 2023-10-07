@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:teste_out/src/core/ui/widgets/loading_widget.dart';
 import 'package:teste_out/src/dto/dto_bank_mock.dart';
 import 'package:teste_out/src/features/profile/profile_controller.dart';
 import 'package:teste_out/src/features/profile/widgets/header_widget.dart';
 import 'package:teste_out/src/repositories/profile_repository_impl.dart';
 
-import '../../core/ui/theme/test_out_theme.dart';
 import '../../core/ui/widgets/error_widget.dart';
+import 'tabs/about_tab.dart';
+import 'tabs/activity_tab.dart';
 import 'widgets/tab_bar_name.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -84,82 +84,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: PageView(
                     controller: pageController,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(0),
-                        child: ListView.builder(
-                          itemCount: controller.profile!.activities.length,
-                          itemBuilder: (context, index) {
-                            final activity =
-                                controller.profile!.activities[index];
-                            return ListTile(
-                              leading: Container(
-                                width: 44,
-                                height: 44,
-                                decoration: ShapeDecoration(
-                                  image: DecorationImage(
-                                    image:
-                                        AssetImage(controller.profile!.photo),
-                                    fit: BoxFit.fill,
-                                  ),
-                                  shape: const OvalBorder(),
-                                ),
-                              ),
-                              title: Row(
-                                children: [
-                                  Text(
-                                    controller.profile!.name,
-                                    style: TestOutTheme
-                                        .themeData.textTheme.bodyMedium!
-                                        .copyWith(fontWeight: FontWeight.w700),
-                                  ),
-                                  const SizedBox(
-                                    width: 4,
-                                  ),
-                                  const Image(
-                                    image:
-                                        AssetImage('assets/icons/vector.png'),
-                                  ),
-                                  const SizedBox(
-                                    width: 8,
-                                  ),
-                                  Text(
-                                    '@${activity.author} º ${DateFormat('dd MMM').format(activity.createAt)}',
-                                    style: TestOutTheme
-                                        .themeData.textTheme.bodySmall!,
-                                  ),
-                                  const Icon(Icons.arrow_drop_down)
-                                ],
-                              ),
-                              subtitle: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    activity.content,
-                                    maxLines: 20,
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.start,
-                                    style: TestOutTheme
-                                        .themeData.textTheme.bodyMedium,
-                                  ),
-                                  const SizedBox(
-                                    height: 4,
-                                  ),
-                                  Row(
-                                    children: [
-                                      const Spacer(),
-                                      const Icon(Icons.comment_outlined),
-                                      const SizedBox(
-                                        width: 20,
-                                      ),
-                                      Text(activity.comments.length.toString())
-                                    ],
-                                  )
-                                ],
-                              ),
-                            );
-                          },
-                        ),
+                      ActivityTab(
+                        controller: controller,
                       ),
+                      AboutTab(
+                        controller: controller,
+                      )
                     ],
                   ),
                 )

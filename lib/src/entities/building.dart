@@ -2,7 +2,7 @@ class Building {
   Building({
     required this.id,
     required this.name,
-    required this.photo,
+    this.photo,
     required this.administrator,
     required this.createAt,
     required this.updateAt,
@@ -10,7 +10,7 @@ class Building {
 
   final int id;
   String name;
-  final String photo;
+  final String? photo;
   String administrator;
   final DateTime createAt;
   DateTime updateAt;

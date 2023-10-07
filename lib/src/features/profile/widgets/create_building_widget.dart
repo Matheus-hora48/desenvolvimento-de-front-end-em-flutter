@@ -33,7 +33,7 @@ class CreateBuildingWidget extends StatelessWidget {
                   height: 44,
                   decoration: ShapeDecoration(
                     image: DecorationImage(
-                      image: AssetImage(building.photo),
+                      image: AssetImage(building.photo!),
                       fit: BoxFit.fill,
                     ),
                     shape: OvalBorder(),

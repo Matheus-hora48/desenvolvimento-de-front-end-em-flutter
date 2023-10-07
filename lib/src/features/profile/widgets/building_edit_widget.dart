@@ -91,7 +91,7 @@ class _BuildingEditWidgetState extends State<BuildingEditWidget> {
           administrator: newAdmin,
           createAt: DateTime.now(),
           updateAt: DateTime.now(),
-          photo: '',
+          photo: 'no',
         ),
       );
     });
@@ -144,8 +144,8 @@ class _BuildingEditWidgetState extends State<BuildingEditWidget> {
                       height: 44,
                       decoration: ShapeDecoration(
                         image: DecorationImage(
-                          image: widget.controller.profile!.photo != null
-                              ? AssetImage(building.photo)
+                          image: building.photo != 'no'
+                              ? AssetImage(building.photo!)
                               : const AssetImage(
                                   'assets/imgs/city_adm_photo.png',
                                 ) as ImageProvider,

@@ -6,19 +6,15 @@ Este é um aplicativo Flutter desenvolvido com o mínimo de dependências, prior
 
    - _Descrição_: O pacote intl fornece internacionalização e localização para o seu aplicativo Flutter. Ele permite a formatação de datas, moedas e outros elementos que podem variar de acordo com o idioma ou região do usuário.
 
-2. **google_fonts: ^6.1.0**
-
-   - _Descrição_: Este pacote facilita a incorporação de fontes do Google Fonts em seu aplicativo Flutter. Ele oferece acesso a uma ampla variedade de fontes para melhorar a aparência e a legibilidade do seu aplicativo.
-
-3. **image_picker: ^1.0.4**
+2. **image_picker: ^1.0.4**
 
    - _Descrição_: O image_picker é uma biblioteca que permite ao seu aplicativo Flutter acessar a galeria de imagens do dispositivo e tirar fotos com a câmera. Isso é útil para aplicativos que precisam de funcionalidades de upload de imagens ou captura de fotos.
 
-4. **geocoding: ^2.1.1**
+3. **geocoding: ^2.1.1**
 
    - _Descrição_: O pacote geocoding fornece uma interface para converter coordenadas geográficas (latitude e longitude) em endereços humanos legíveis e vice-versa. Isso pode ser útil em aplicativos que necessitam de funcionalidades de geolocalização ou exibição de endereços.
 
-5. **google_maps_flutter: ^2.5.0**
+4. **google_maps_flutter: ^2.5.0**
    - _Descrição_: Este pacote oferece suporte à integração de mapas do Google em aplicativos Flutter. Ele permite a exibição de mapas interativos, com a capacidade de adicionar marcadores, polígonos, entre outros elementos.
 
 ## Como Executar o Aplicativo
